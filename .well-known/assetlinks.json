@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.calt.calt_mobile_app",
+      "sha256_cert_fingerprints": [
+        "89:C2:58:29:F6:10:EB:16:AE:A0:EC:C7:68:FB:AC:66:64:F3:52:76:F3:3E:45:2F:31:05:E8:11:D0:72:FC:C2",
+        "9F:45:20:1D:71:D5:E3:A3:3B:D9:71:49:43:07:37:3F:05:D4:65:C7:7F:01:E8:4D:CD:7A:31:63:4F:CB:65:CA",
+        "CE:DC:A3:01:55:31:84:A5:50:C5:C5:BC:EB:F4:68:84:CC:1D:D0:E2:97:C7:22:15:47:43:77:71:15:32:42:CE"
+      ]
+    }
+  }
+]

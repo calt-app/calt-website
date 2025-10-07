@@ -1,0 +1,16 @@
+.git
+.github
+.gitattributes
+README.md
+.nojekyll
+_config.yml
+node_modules
+.DS_Store
+*.log
+.vscode
+.idea
+Dockerfile
+nginx.conf
+.dockerignore
+deploy.sh
+cloudbuild.yaml
