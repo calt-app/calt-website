@@ -39,6 +39,74 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
     
+    // Waitlist Form Submission
+    const waitlistForm = document.querySelector('.waitlist-form');
+    
+    if (waitlistForm) {
+        // Replace with your Google Apps Script Web App URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz5d82rUwIq7hoLdeQVdE0ofL0ZNF94LGWIo7Ia-VwA_0UDI0Kya2knXQMMHvKs3DpgcA/exec';
+        
+        waitlistForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const emailInput = waitlistForm.querySelector('input[type="email"]');
+            const submitButton = waitlistForm.querySelector('button[type="submit"]');
+            const email = emailInput.value.trim();
+            
+            // Disable form during submission
+            submitButton.disabled = true;
+            submitButton.textContent = 'joining...';
+            
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Success message
+                    emailInput.value = '';
+                    submitButton.textContent = 'joined!';
+                    submitButton.style.backgroundColor = '#69a9d1';
+                    
+                    setTimeout(() => {
+                        submitButton.textContent = 'join waitlist';
+                        submitButton.style.backgroundColor = '';
+                        submitButton.disabled = false;
+                    }, 3000);
+                } else if (result.status === 'duplicate') {
+                    // Duplicate email
+                    submitButton.textContent = 'already joined!';
+                    submitButton.style.backgroundColor = '#ffc107';
+                    
+                    setTimeout(() => {
+                        submitButton.textContent = 'join waitlist';
+                        submitButton.style.backgroundColor = '';
+                        submitButton.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                submitButton.textContent = 'error - try again';
+                submitButton.style.backgroundColor = '#dc3545';
+                
+                setTimeout(() => {
+                    submitButton.textContent = 'join waitlist';
+                    submitButton.style.backgroundColor = '';
+                    submitButton.disabled = false;
+                }, 3000);
+            }
+        });
+    }
+    
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
     

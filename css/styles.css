@@ -4,7 +4,7 @@
 :root {
     /* Colors */
     --color-primary: #72B9E6;
-    --color-primary-darker: #619EC4;
+    --color-primary-darker: #69a9d1;
     --color-black: #181616;
     --color-gray-dark: #666666;
     --color-gray-medium: #9F9F9F;
@@ -413,9 +413,6 @@ section, header {
     height: 23.75rem; /* 380px */
     left: -5.5rem; /* -89px */
     top: 8rem; /* 129px */
-    background-color: var(--color-primary-darker);
-    border-radius: 50%;
-    opacity: 0.1;
     z-index: -1;
 }
 .organizer-content {
