@@ -52,14 +52,7 @@
     {
       "source": "/download",
       "destination": "https://onelink.to/3yts3h",
-      "permanent": false,
-      "statusCode": 302
-    },
-    {
-      "source": "/download/",
-      "destination": "https://onelink.to/3yts3h",
-      "permanent": false,
-      "statusCode": 302
+      "permanent": false
     }
   ],
   "routes": [
