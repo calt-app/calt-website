@@ -52,12 +52,8 @@
     {
       "source": "/download",
       "destination": "https://onelink.to/3yts3h",
-      "permanent": false
-    },
-    {
-      "source": "/test",
-      "destination": "https://instagram.com",
-      "permanent": false
+      "permanent": false,
+      "statusCode": 302
     }
   ],
   "routes": [
