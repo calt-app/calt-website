@@ -51,8 +51,25 @@
   "redirects": [
     {
       "source": "/download",
-      "destination": "/download/index.html",
-      "permanent": false
+      "destination": "https://onelink.to/3yts3h",
+      "permanent": false,
+      "statusCode": 302
+    },
+    {
+      "source": "/download/",
+      "destination": "https://onelink.to/3yts3h",
+      "permanent": false,
+      "statusCode": 302
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
     }
   ],
   "rewrites": [

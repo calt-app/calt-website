@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - CALT</title>
+    <link rel="icon" type="image/png" href="/assets/img/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #72B9E6;
+            --color-primary-darker: #619EC4;
+            --color-black: #181616;
+            --color-gray-medium: #9F9F9F;
+            --color-white: #FFFFFF;
+            --color-bg: #F8F9FA;
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Manrope', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-bg);
+            color: var(--color-black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 6rem;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+        
+        .content {
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .accent {
+            color: var(--color-primary);
+        }
+        
+        p {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            color: var(--color-gray-medium);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.75rem 2rem;
+            border-radius: 3rem;
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 185, 230, 0.4);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-black);
+            border: 2px solid var(--color-black);
+            padding: 0.75rem 2rem;
+            border-radius: 3rem;
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-black);
+            color: var(--color-white);
+        }
+        
+        .graphic {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+            opacity: 0.8;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 2rem auto 1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .countdown {
+            font-size: 1rem;
+            color: var(--color-gray-medium);
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .btn-primary, .btn-secondary {
+                display: block;
+                margin: 0.5rem auto;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="/assets/img/logo.png" alt="CALT Logo" class="logo">
+    
+    <div class="content" id="content">
+        <!-- Content will be injected by JavaScript -->
+    </div>
+    
+    <script>
+        const currentPath = window.location.pathname;
+        const contentDiv = document.getElementById('content');
+        
+        // Check if this is an /events/* path
+        if (currentPath.startsWith('/events/')) {
+            // Extract event ID from path
+            const eventId = currentPath.split('/events/')[1].replace('/', '');
+            
+            // Deep link URL for the app
+            const appDeepLink = `calt://event/${eventId}`;
+            const appStoreLink = 'https://apps.apple.com/gr/app/calt/id6743764271';
+            const playStoreLink = 'https://play.google.com/store/apps/details?id=com.calt.calt_mobile_app';
+            
+            contentDiv.innerHTML = `
+                <img src="/assets/img/Logo-Gradient.png" alt="CALT App Icon" class="app-icon">
+                <h1>Open in <span class="accent">CALT</span></h1>
+                <p>This event is best viewed in the CALT app</p>
+                <a href="${appDeepLink}" class="btn-primary" id="openAppBtn">Open in App</a>
+                <p style="font-size: 1rem; margin: 1.5rem 0 0.5rem;">Don't have the app?</p>
+                <a href="${appStoreLink}" class="btn-secondary">Download on iOS</a>
+                <a href="${playStoreLink}" class="btn-secondary">Download on Android</a>
+                <p class="countdown" id="countdown">Attempting to open app...</p>
+            `;
+            
+            // Attempt to open app automatically after a short delay
+            let countdown = 3;
+            const countdownEl = document.getElementById('countdown');
+            
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                if (countdown > 0) {
+                    countdownEl.textContent = `Attempting to open app in ${countdown}...`;
+                } else {
+                    countdownEl.textContent = 'If the app didn\'t open, tap "Open in App" above';
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+            
+            // Try to open the app after 3 seconds
+            setTimeout(() => {
+                window.location.href = appDeepLink;
+            }, 3000);
+            
+        } else {
+            // Regular 404 page with funny graphic
+            contentDiv.innerHTML = `
+                <h1><span class="accent">404</span></h1>
+                <h1>Oops! Nothing here</h1>
+                <svg class="graphic" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#72B9E6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#619EC4;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Empty box -->
+                    <rect x="100" y="100" width="200" height="150" fill="none" stroke="url(#grad)" stroke-width="4" rx="10"/>
+                    <!-- Sad face -->
+                    <circle cx="160" cy="150" r="8" fill="url(#grad)"/>
+                    <circle cx="240" cy="150" r="8" fill="url(#grad)"/>
+                    <path d="M 160 200 Q 200 180 240 200" fill="none" stroke="url(#grad)" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Floating question marks -->
+                    <text x="80" y="80" font-size="40" fill="url(#grad)" opacity="0.5">?</text>
+                    <text x="300" y="90" font-size="40" fill="url(#grad)" opacity="0.5">?</text>
+                    <text x="320" y="200" font-size="30" fill="url(#grad)" opacity="0.3">?</text>
+                </svg>
+                <p>Looks like this page went to an event and forgot to come back</p>
+                <a href="/" class="btn-primary">Go Home</a>
+                <a href="/#features" class="btn-secondary">Explore Features</a>
+            `;
+        }
+    </script>
+</body>
+</html>
