@@ -53,11 +53,15 @@
       "source": "/download",
       "destination": "https://onelink.to/3yts3h"
     }
-    ],
+  ],
   "rewrites": [
     {
       "source": "/el/:path*",
       "destination": "/el/:path*"
+    },
+    {
+      "source": "/events/:id",
+      "destination": "/api/event-preview?id=:id"
     }
   ]
 }
