@@ -58,6 +58,10 @@
     {
       "source": "/el/:path*",
       "destination": "/el/:path*"
+    },
+    {
+      "source": "/events/:id",
+      "destination": "/api/event-preview?id=:id"
     }
   ]
 }
