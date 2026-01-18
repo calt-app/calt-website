@@ -175,4 +175,31 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     }
+    // Organizer Carousel
+    const carouselTrack = document.querySelector('.organizer-carousel-track');
+    if (carouselTrack) {
+        // Get the base path from data attribute or default to current relative path structure
+        // We'll set this data attribute in the HTML
+        const basePath = carouselTrack.dataset.assetPath || 'assets/img/organizer/';
+        const imageCount = 7;
+        const slides = [];
+
+        // Generate slides
+        for (let i = 1; i <= imageCount; i++) {
+            const slide = document.createElement('div');
+            slide.className = 'organizer-slide';
+            
+            const img = document.createElement('img');
+            img.src = `${basePath}calt-platform-events-${i}.jpg`;
+            img.alt = `CALT Platform Event ${i}`;
+            
+            slide.appendChild(img);
+            slides.push(slide);
+        }
+
+        // Add original set
+        slides.forEach(slide => carouselTrack.appendChild(slide.cloneNode(true)));
+        // Add duplicate set for loop
+        slides.forEach(slide => carouselTrack.appendChild(slide.cloneNode(true)));
+    }
 });

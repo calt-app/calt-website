@@ -209,6 +209,16 @@ header {
 /* =================================
    3. Hero Section
    ================================= */
+.hero-carousel-section {
+    padding: 3rem 0;
+    /* Equal vertical padding */
+    background-color: var(--color-bg);
+}
+
+.hero-carousel-section .organizer-carousel-wrapper {
+    margin: 0;
+}
+
 .hero-section {
     padding-top: calc(3.5rem + 4.875rem);
     /* Nav height + padding */
@@ -390,6 +400,13 @@ header {
     font-size: 1.25rem;
 }
 
+.support-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-gray-dark);
+    margin-bottom: 0.5rem;
+}
+
 .btn-instagram {
     display: inline-flex;
     align-items: center;
@@ -429,7 +446,7 @@ header {
    5. Features Section
    ================================= */
 .features-section {
-    background-color: var(--color-white);
+    background-color: var(--color-bg);
     padding-top: var(--section-padding-y);
     padding-bottom: var(--section-padding-y);
 }
@@ -502,6 +519,7 @@ header {
    5. Personalization Section
    ================================= */
 .personalization-section {
+    background-color: var(--color-white);
     padding-top: var(--section-padding-y);
     padding-bottom: var(--section-padding-y);
     overflow: hidden;
@@ -571,7 +589,7 @@ header {
    6. Partners Section
    ================================= */
 .partners-section {
-    background-color: var(--color-white);
+    background-color: var(--color-bg);
     padding-top: calc(var(--section-padding-y) - 4rem);
     padding-bottom: calc(var(--section-padding-y) - 4rem);
 }
@@ -637,6 +655,50 @@ header {
     overflow: hidden;
 }
 
+.organizer-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin: 10rem 0 3rem;
+    position: relative;
+    /* Fade effect on sides */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.organizer-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scroll-organizer 40s linear infinite;
+}
+
+.organizer-slide {
+    width: 20rem;
+    /* Fixed width for consistent slide size */
+    aspect-ratio: 4 / 3;
+    border-radius: 1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.organizer-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+@keyframes scroll-organizer {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 .organizer-bg-shape {
     position: absolute;
     width: 24.875rem;
@@ -652,7 +714,8 @@ header {
 
 .organizer-content {
     text-align: center;
-    margin: 5rem 15rem;
+    margin: 5rem 10rem;
+    margin-top: 0rem;
 }
 
 .organizer-content p {
@@ -999,10 +1062,28 @@ header {
         min-height: auto;
     }
 
-    .hero-content {
+    .hero-content,
+    .what-we-do-content {
         flex-direction: column-reverse;
         gap: 3rem;
         padding: 0 1.5rem;
+    }
+
+    .what-we-do-img {
+        max-width: 100%;
+    }
+
+    .location-badge {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .location-badge i {
+        font-size: 1rem;
+    }
+
+    .support-text {
+        text-align: center;
     }
 
     .hero-text {
