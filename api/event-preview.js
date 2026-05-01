@@ -146,15 +146,15 @@ export default async function handler(req, res) {
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --acc:    #72B9E6;
-      --bg:     #000;
-      --surf:   rgba(255,255,255,0.07);
-      --surf-h: rgba(255,255,255,0.12);
-      --sep:    rgba(255,255,255,0.09);
-      --t1:     #fff;
-      --t2:     rgba(255,255,255,0.55);
-      --t3:     rgba(255,255,255,0.32);
-      --on-acc: #000;
+      --acc:    #3A8EC4;
+      --bg:     #EEF3F9;
+      --surf:   rgba(0,0,0,0.05);
+      --surf-h: rgba(0,0,0,0.09);
+      --sep:    rgba(0,0,0,0.08);
+      --t1:     #0F1923;
+      --t2:     rgba(15,25,35,0.55);
+      --t3:     rgba(15,25,35,0.38);
+      --on-acc: #fff;
       --ui:     'Poppins', system-ui, sans-serif;
       --body:   'Inter', system-ui, sans-serif;
     }
@@ -171,7 +171,7 @@ export default async function handler(req, res) {
 
     .page {
       background:
-        radial-gradient(ellipse 80% 50% at 25% -10%, rgba(114,185,230,0.08), transparent 55%),
+        radial-gradient(ellipse 80% 50% at 25% -10%, rgba(58,142,196,0.07), transparent 55%),
         var(--bg);
     }
 
@@ -198,7 +198,7 @@ export default async function handler(req, res) {
     .cover-img  { width: 100%; height: 100%; object-fit: cover; display: block; }
     .cover-empty {
       width: 100%; height: 100%;
-      background: radial-gradient(ellipse at 50% 40%, rgba(114,185,230,0.12), transparent 65%);
+      background: radial-gradient(ellipse at 50% 40%, rgba(58,142,196,0.10), transparent 65%);
     }
     .calt-credit {
       display: flex;
@@ -210,7 +210,7 @@ export default async function handler(req, res) {
       font-size: 12px;
       font-weight: 500;
     }
-    .calt-credit img { height: 18px; width: auto; opacity: 0.4; }
+    .calt-credit img { height: 18px; width: auto; opacity: 0.55; }
 
     /* right */
     .col-right { min-width: 0; }
@@ -221,7 +221,7 @@ export default async function handler(req, res) {
       align-items: center;
       padding: 3px 11px;
       border-radius: 9999px;
-      background: rgba(114,185,230,0.11);
+      background: rgba(58,142,196,0.10);
       color: var(--acc);
       font-family: var(--ui);
       font-size: 11px;
@@ -313,17 +313,14 @@ export default async function handler(req, res) {
     .btn-cta:hover  { opacity: 0.88; }
     .btn-cta:active { opacity: 0.75; }
 
-    .store-row { display: flex; gap: 8px; margin-bottom: 32px; }
+    .store-row { display: flex; gap: 10px; margin-bottom: 32px; }
     .store-btn {
       flex: 1;
-      display: flex; align-items: center; justify-content: center; gap: 7px;
-      padding: 10px;
-      background: var(--surf); color: var(--t1);
-      font-family: var(--ui); font-size: 13px; font-weight: 600;
-      border-radius: 10px;
-      transition: background 150ms ease;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 150ms ease;
     }
-    .store-btn:hover { background: var(--surf-h); }
+    .store-btn:hover { opacity: 0.82; }
+    .store-btn img { height: 42px; width: auto; display: block; }
 
     .sep { height: 1px; background: var(--sep); margin: 28px 0; }
     .sec-label {
@@ -404,10 +401,10 @@ export default async function handler(req, res) {
 
       <div class="store-row">
         <a href="https://apps.apple.com/app/id6743764271" target="_blank" rel="noopener noreferrer" class="store-btn">
-          &#x1F34E; App Store
+          <img src="/assets/img/app-store-badge.png" alt="Download on the App Store">
         </a>
         <a href="https://play.google.com/store/apps/details?id=com.calt.calt_mobile_app" target="_blank" rel="noopener noreferrer" class="store-btn">
-          &#x25B6; Google Play
+          <img src="/assets/img/google-play-badge.png" alt="Get it on Google Play">
         </a>
       </div>
 
