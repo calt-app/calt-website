@@ -146,7 +146,8 @@ export default async function handler(req, res) {
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --acc:    #3A8EC4;
+      --acc:    #72B9E6;
+      --on-acc: #000;
       --bg:     #EEF3F9;
       --surf:   rgba(0,0,0,0.05);
       --surf-h: rgba(0,0,0,0.09);
@@ -154,7 +155,6 @@ export default async function handler(req, res) {
       --t1:     #0F1923;
       --t2:     rgba(15,25,35,0.55);
       --t3:     rgba(15,25,35,0.38);
-      --on-acc: #fff;
       --ui:     'Poppins', system-ui, sans-serif;
       --body:   'Inter', system-ui, sans-serif;
     }
@@ -171,7 +171,7 @@ export default async function handler(req, res) {
 
     .page {
       background:
-        radial-gradient(ellipse 80% 50% at 25% -10%, rgba(58,142,196,0.07), transparent 55%),
+        radial-gradient(ellipse 80% 50% at 25% -10%, rgba(114,185,230,0.10), transparent 55%),
         var(--bg);
     }
 
@@ -198,7 +198,7 @@ export default async function handler(req, res) {
     .cover-img  { width: 100%; height: 100%; object-fit: cover; display: block; }
     .cover-empty {
       width: 100%; height: 100%;
-      background: radial-gradient(ellipse at 50% 40%, rgba(58,142,196,0.10), transparent 65%);
+      background: radial-gradient(ellipse at 50% 40%, rgba(114,185,230,0.18), transparent 65%);
     }
     .calt-credit {
       display: flex;
@@ -221,7 +221,7 @@ export default async function handler(req, res) {
       align-items: center;
       padding: 3px 11px;
       border-radius: 9999px;
-      background: rgba(58,142,196,0.10);
+      background: rgba(114,185,230,0.15);
       color: var(--acc);
       font-family: var(--ui);
       font-size: 11px;
