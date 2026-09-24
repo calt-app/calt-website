@@ -10,6 +10,14 @@ export default async function handler(req, res) {
 
         const event = await response.json();
 
+        // Unlisted events are reachable by link only. Keep them out of search
+        // engines, so a link posted somewhere public doesn't make them
+        // discoverable. A header rather than a <meta> tag, so it applies no
+        // matter how the page template changes.
+        if (event.visibility === 'unlisted') {
+            res.setHeader('X-Robots-Tag', 'noindex');
+        }
+
         const title         = event.title || 'Event on CALT';
         const description   = event.englishDescription || event.greekDescription || '';
         const image         = event.imageUrl || event.initialImageUrl || '';
