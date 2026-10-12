@@ -51,6 +51,26 @@
     {
       "source": "/download",
       "destination": "https://onelink.to/3yts3h"
+    },
+    {
+      "source": "/organizer",
+      "destination": "https://organizer.calt.gr",
+      "permanent": false
+    },
+    {
+      "source": "/organizer.html",
+      "destination": "https://organizer.calt.gr",
+      "permanent": false
+    },
+    {
+      "source": "/el/organizer",
+      "destination": "https://organizer.calt.gr",
+      "permanent": false
+    },
+    {
+      "source": "/el/organizer.html",
+      "destination": "https://organizer.calt.gr",
+      "permanent": false
     }
   ],
   "rewrites": [
