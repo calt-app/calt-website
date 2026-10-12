@@ -61,7 +61,19 @@
     },
     {
       "source": "/events/:id",
-      "destination": "/api/event-preview?id=:id"
+      "destination": "https://calt-web-app.vercel.app/events/:id"
+    },
+    {
+      "source": "/c/:slug",
+      "destination": "https://calt-web-app.vercel.app/c/:slug"
+    },
+    {
+      "source": "/app-assets/:path*",
+      "destination": "https://calt-web-app.vercel.app/app-assets/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.calt.gr/:path*"
     }
   ]
 }
